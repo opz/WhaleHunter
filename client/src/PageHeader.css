@@ -1,0 +1,37 @@
+.PageHeader {
+    /*background: url('background.jpg') center/cover no-repeat;*/
+    margin-bottom: 4rem;
+    padding: 10em 0;
+    border-bottom: 1px solid rgba(34,36,38,.1);
+}
+
+.PageHeader:not(.fullscreen) {
+    padding-top: 13em;
+}
+
+.PageHeader.fullscreen {
+    height: 100vh;
+}
+
+.PageHeader .ui.grid,
+.PageHeader .ui.container {
+    height: 100%;
+}
+
+.PageHeader h1.ui.header {
+    font-size: 4rem;
+}
+
+.PageHeader h1.ui.header .sub.header {
+    font-size: 1.25rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .PageHeader h1.ui.header {
+        font-size: 6rem;
+    }
+
+    .PageHeader h1.ui.header .sub.header {
+        font-size: 2rem;
+    }
+}
