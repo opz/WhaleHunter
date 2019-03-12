@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Pagination, Table } from 'semantic-ui-react';
+import { Button, Pagination, Table } from 'semantic-ui-react';
+import ReactExport from 'react-data-export';
+
+import './WhaleList.css';
 
 function WhaleRow(props) {
   const { whale } = props;
@@ -24,6 +27,8 @@ class WhaleList extends Component {
     const { whales } = this.props;
     const { pageSize, activePage } = this.state;
 
+    const ExcelFile = ReactExport.ExcelFile;
+
     const start = (activePage - 1) * pageSize;
     const end = activePage * pageSize;
 
@@ -34,26 +39,46 @@ class WhaleList extends Component {
 
     const totalPages = Math.ceil(whales.length / pageSize);
 
-    return (
-      <div className="WhaleList">
-        <Table celled>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Address</Table.HeaderCell>
-              <Table.HeaderCell>Balance</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {whaleRows}
-          </Table.Body>
-        </Table>
-        <Pagination
-          activePage={activePage}
-          totalPages={totalPages}
-          onPageChange={this.onPageChange}
-        />
-      </div>
-    );
+    if (whales && whales.length > 0) {
+      return (
+        <div className="WhaleList">
+          <Table celled>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Address</Table.HeaderCell>
+                <Table.HeaderCell>Balance</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {whaleRows}
+            </Table.Body>
+          </Table>
+          <Pagination
+            borderless
+            activePage={activePage}
+            totalPages={totalPages}
+            onPageChange={this.onPageChange}
+          />
+          <ExcelFile element={
+              <Button
+                circular
+                floated="right"
+                content="DOWNLOAD"
+                icon="download"
+                labelPosition="right"
+              />
+            }
+          >
+            <ExcelFile.ExcelSheet data={whales} name="Whales">
+              <ExcelFile.ExcelColumn label="Address" value={0} />
+              <ExcelFile.ExcelColumn label="Balance" value={1} />
+            </ExcelFile.ExcelSheet>
+          </ExcelFile>
+        </div>
+      );
+    } else {
+      return '';
+    }
   }
 }
 
