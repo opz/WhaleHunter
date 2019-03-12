@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from './Navigation';
+import Footer from './Footer';
 
 export default props => {
   const { web3, children } = props;
@@ -7,10 +8,10 @@ export default props => {
   return (
     <>
       <Navigation
-        logo={null}
         web3={web3}
       >
         {children}
+        <Footer />
       </Navigation>
     </>
   );

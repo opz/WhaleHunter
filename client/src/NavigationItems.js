@@ -4,13 +4,15 @@ import { Image, Menu } from 'semantic-ui-react';
 
 export default () => {
   let listItems = [
-    /*
     (
-      <Menu.Item key="contribute" as={NavLink} to="/contribute">
-        <Image src={coins} className="MenuItemIcon" />Purchase Tokens
+      <Menu.Item key="terms" as={NavLink} to="/terms">
+        Terms and Conditions
+      </Menu.Item>
+    ), (
+      <Menu.Item key="privacy" as={NavLink} to="/privacy">
+        Privacy Policy
       </Menu.Item>
     )
-    */
   ];
 
   return listItems;

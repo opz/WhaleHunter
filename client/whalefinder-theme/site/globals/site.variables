@@ -1,0 +1,15 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@primaryColor        : @purple;
+@pageBackground      : @purpleBackground;
+@inputVerticalPadding   : @relative14px;
+@textColor           : @midWhite;
+@purple           : #802bb1;
+@lightPurple      : #564f6f;
+@midWhite         : #d1d7e0;
+@purpleBackground : #2d283e;
+@lightPurpleBackground : #4C495d;
+@mutedTextColor              : @lightPurple;
+@inputBackground        : @lightPurple;

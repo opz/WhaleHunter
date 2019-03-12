@@ -1,5 +1,5 @@
 .PageHeader {
-    /*background: url('background.jpg') center/cover no-repeat;*/
+    background: url('background.jpg') center/cover no-repeat;
     margin-bottom: 4rem;
     padding: 10em 0;
     border-bottom: 1px solid rgba(34,36,38,.1);

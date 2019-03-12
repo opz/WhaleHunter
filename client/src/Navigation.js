@@ -25,7 +25,7 @@ class Navigation extends Component {
   }
 
   render() {
-    const { web3, logo, children } = this.props;
+    const { web3, children } = this.props;
     const { visible } = this.state;
 
     return (
@@ -36,10 +36,7 @@ class Navigation extends Component {
             <NavigationItems />
           </Sidebar>
           <Sidebar.Pusher onClick={this.onPusherClick} dimmed={visible}>
-            <Menu fixed="top">
-              <Menu.Item as={NavLink} exact to="/" header>
-                <Image src={logo} />
-              </Menu.Item>
+            <Menu secondary fixed="top">
               <Responsive
                 as={Menu.Menu}
                 minWidth={Responsive.onlyTablet.minWidth}

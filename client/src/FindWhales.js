@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Message } from 'semantic-ui-react';
+import { Divider, Form, Message } from 'semantic-ui-react';
 import findWhales from './utils/findWhales';
 import WhaleList from './WhaleList';
 
@@ -29,7 +29,6 @@ class FindWhales extends Component {
     }
 
     this.setState({ loading: false });
-
   };
 
   render() {
@@ -60,8 +59,9 @@ class FindWhales extends Component {
             />
           </Form.Group>
           <Message error title="Error" content={errorMessage} />
-          <Form.Button>Find Whales</Form.Button>
+          <Form.Button primary circular>FIND WHALES</Form.Button>
         </Form>
+        <Divider section hidden />
         <WhaleList whales={whales} />
       </>
     );

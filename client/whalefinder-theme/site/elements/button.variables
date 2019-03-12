@@ -1,0 +1,5 @@
+@backgroundColor: @lightPurpleBackground;
+@textColor: @midWhite;
+@horizontalPadding: 2em;
+@primaryTextColor: #2d283e;
+@labeledIconPadding: (@horizontalPadding + @labeledIconWidth - 1em);

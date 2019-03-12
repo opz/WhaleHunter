@@ -1,8 +1,17 @@
 import React from 'react';
-import { Button, Container, Divider, Grid, Header } from 'semantic-ui-react';
+import {
+  Button,
+  Container,
+  Divider,
+  Grid,
+  Header,
+  Image
+} from 'semantic-ui-react';
 import classNames from 'classnames';
 
 import './PageHeader.css';
+
+import orca from './orca.png';
 
 export default props => {
   const {
@@ -20,18 +29,23 @@ export default props => {
     <div className={classes}>
       <Container>
         <Grid verticalAlign="middle">
-          <Grid.Row>
-            <Grid.Column textAlign="center">
-              <Header as="h1" textAlign="center" className="title">
+          <Grid.Row columns={2}>
+            <Grid.Column>
+              <Header as="h1" color="purple" className="title">
                 {title}
                 <Header.Subheader>
                   {subtitle}
                 </Header.Subheader>
               </Header>
               <Divider hidden />
-              <Button primary onClick={onCallToAction}>{callToAction}</Button>
+              <Button primary circular onClick={onCallToAction}>
+                {callToAction}
+              </Button>
               {children && (<Divider hidden />)}
               {children}
+            </Grid.Column>
+            <Grid.Column>
+              <Image src={orca} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
