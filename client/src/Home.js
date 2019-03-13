@@ -14,7 +14,6 @@ const onCallToAction = formRef => {
   };
 };
 
-
 export default withWeb3()(props => {
   const { web3 } = props;
 
@@ -24,11 +23,16 @@ export default withWeb3()(props => {
     <Layout web3={web3}>
       <PageHeader
         title="WhaleHunter"
-        subtitle="Find whales for ERC-20 tokens"
-        callToAction="HUNT FOR WHALES"
+        subtitle="Find whales for any ERC-20 token"
+        callToAction="START HUNTING"
         onCallToAction={onCallToAction(formRef)}
         fullscreen
-      />
+      >
+        <p style={{ textAlign: 'justify' }}>
+          WhaleHunter searches the transaction history of an ERC-20 token to identify all current token holders and their token balance.
+          The list is sorted by balance in descending order, showing the biggest whales at the top.
+        </p>
+      </PageHeader>
       <Container text>
         <div ref={formRef}>
           <FindWhales web3={web3} />

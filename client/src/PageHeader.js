@@ -28,7 +28,7 @@ export default props => {
   return (
     <div className={classes}>
       <Container>
-        <Grid verticalAlign="middle">
+        <Grid relaxed="very" verticalAlign="middle">
           <Grid.Row columns={2}>
             <Grid.Column>
               <Header as="h1" color="purple" className="title">
@@ -37,12 +37,12 @@ export default props => {
                   {subtitle}
                 </Header.Subheader>
               </Header>
+              {children && (<Divider hidden />)}
+              {children}
               <Divider hidden />
               <Button primary circular onClick={onCallToAction}>
                 {callToAction}
               </Button>
-              {children && (<Divider hidden />)}
-              {children}
             </Grid.Column>
             <Grid.Column>
               <Image src={orca} />
