@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { Confirm, Divider, Form, Message } from 'semantic-ui-react';
+import {
+  Confirm,
+  Divider,
+  Form,
+  Message
+} from 'semantic-ui-react';
 import findWhales from './utils/findWhales';
 import WhaleList from './WhaleList';
 
@@ -9,9 +14,13 @@ class FindWhales extends Component {
   state = {
     token: '',
     decimals: '',
+    blockBatchSize: '50000',
+    concurrentBatches: '100',
+    addressBatchSize: '100',
     whales: [],
     loading: false,
     errorMessage: '',
+    advancedVisible: false,
     modalOpen: false
   };
 
@@ -23,12 +32,23 @@ class FindWhales extends Component {
 
   onConfirm = async () => {
     const { web3 } = this.props;
-    const { token } = this.state;
+    const {
+      token,
+      blockBatchSize,
+      concurrentBatches,
+      addressBatchSize
+    } = this.state;
 
     this.setState({ loading: true, errorMessage: '', modalOpen: false });
 
     try {
-      const whales = await findWhales(web3, token);
+      const whales = await findWhales(
+        web3,
+        token,
+        blockBatchSize,
+        concurrentBatches,
+        addressBatchSize
+      );
 
       this.setState({ whales });
     } catch(error) {
@@ -38,15 +58,28 @@ class FindWhales extends Component {
     this.setState({ loading: false });
   };
 
+  onShowAdvancedClick = event => {
+    event.preventDefault();
+    const { advancedVisible } = this.state;
+    this.setState({ advancedVisible: !advancedVisible });
+  };
+
   render() {
     const {
       token,
       decimals,
+      blockBatchSize,
+      concurrentBatches,
+      addressBatchSize,
       whales,
       loading,
       errorMessage,
+      advancedVisible,
       modalOpen
     } = this.state;
+
+    const advancedClassName = `AdvancedForm fade down
+      ${advancedVisible ? '' : ' hidden'}`;
 
     return (
       <>
@@ -72,8 +105,44 @@ class FindWhales extends Component {
               width={4}
             />
           </Form.Group>
+          <Form.Group
+            widths="equal"
+            className={advancedClassName}
+          >
+            <Form.Input
+              label="Blocks Per Batch"
+              name="blockBatchSize"
+              value={blockBatchSize}
+              onChange={this.onChange}
+              required
+            />
+            <Form.Input
+              label="Concurrent Batches"
+              name="concurrentBatches"
+              value={concurrentBatches}
+              onChange={this.onChange}
+              required
+            />
+            <Form.Input
+              label="Addresses Per Batch"
+              name="addressBatchSize"
+              value={addressBatchSize}
+              onChange={this.onChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Button primary circular>SEARCH FOR WHALES</Form.Button>
+            <Form.Button
+              circular
+              basic
+              primary
+              onClick={this.onShowAdvancedClick}
+            >
+              {advancedVisible ? 'Hide' : 'Show'} Advanced Options
+            </Form.Button>
+          </Form.Group>
           <Message error title="Error" content={errorMessage} />
-          <Form.Button primary circular>SEARCH FOR WHALES</Form.Button>
         </Form>
         <Confirm
           className="FindWhalesModal"

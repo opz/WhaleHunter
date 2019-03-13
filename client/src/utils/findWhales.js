@@ -322,12 +322,14 @@ function mapNewBalances(web3, addresses, balances, addressBalanceMap) {
   return addressBalanceMap;
 }
 
-export default async function findWhales(web3, token) {
+export default async function findWhales(
+  web3,
+  token,
+  blockBatchSize,
+  firstBlockBatchSize,
+  addressBatchSize
+) {
   const instance = new web3.eth.Contract(erc20Abi, token);
-
-  const blockBatchSize = 50000;
-  const firstBlockBatchSize = 100;
-  const addressBatchSize = 100;
 
   // Create batches of blocks for getting past events
   const latest = await web3.eth.getBlockNumber();
