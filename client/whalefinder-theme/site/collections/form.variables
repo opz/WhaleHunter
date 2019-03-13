@@ -1,0 +1,7 @@
+@loaderDimmerColor: rgba(45, 40, 62, 0.8);
+@inputAutoFillBackground: @inputBackground;
+@inputAutoFillBorder: @borderColor;
+@inputAutoFillFocusBackground: @inputAutoFillBackground;
+@inputAutoFillFocusBorder: @focusedFormBorderColor:;
+@inputAutoFillErrorBackground: @inputBackground;
+@inputAutoFillErrorBorder: #E0B4B4;

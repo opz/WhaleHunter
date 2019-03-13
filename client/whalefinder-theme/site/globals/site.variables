@@ -13,3 +13,5 @@
 @lightPurpleBackground : #4C495d;
 @mutedTextColor              : @lightPurple;
 @inputBackground        : @lightPurple;
+@focusedFormBorderColor: @purple;
+@selectedTextColor           : @midWhite;
