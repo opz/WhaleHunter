@@ -3,6 +3,8 @@ import {
   Confirm,
   Divider,
   Form,
+  Header,
+  List,
   Message
 } from 'semantic-ui-react';
 import findWhales from './utils/findWhales';
@@ -83,6 +85,14 @@ class FindWhales extends Component {
 
     return (
       <>
+        <Header as="h4">Instructions</Header>
+        <List bulleted size="small">
+          <List.Item>Enter the ERC-20 token address that you want to search.</List.Item>
+          <List.Item>Set the token decimals if you want account balances displayed in TKNs instead of TKNbits.</List.Item>
+          <List.Item>Start the search, it can take several minutes to complete, so do not navigate away from the page.</List.Item>
+          <List.Item>When the search is complete, click the download button to save your results to a spreadsheet.</List.Item>
+        </List>
+        <Divider hidden />
         <Form
           loading={loading}
           error={!!errorMessage}
