@@ -1,0 +1,10 @@
+@background: @purpleBackground;
+@headerBackground: @purpleBackground;
+@headerColor: @textColor;
+@contentBackground: @purpleBackground;
+@actionBackground: @purpleBackground;
+@headerBorder: none;
+@actionBorder: none;
+@actionAlign: center;
+@headerPadding: @headerVerticalPadding @headerHorizontalPadding 0;
+@contentPadding: 0.75rem 1.5rem;
