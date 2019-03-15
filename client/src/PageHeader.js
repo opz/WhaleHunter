@@ -28,7 +28,7 @@ export default props => {
   return (
     <div className={classes}>
       <Container>
-        <Grid relaxed="very" verticalAlign="middle">
+        <Grid relaxed="very" verticalAlign="middle" stackable>
           <Grid.Row columns={2}>
             <Grid.Column>
               <Header as="h1" color="purple" className="title">

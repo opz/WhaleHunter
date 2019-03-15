@@ -1,1 +1,3 @@
 @background: @lightPurpleBackground;
+@secondaryItemPadding: @relativeHuge @relativeSmall;
+@verticalBackground: @lightPurpleBackground;

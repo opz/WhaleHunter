@@ -9,3 +9,25 @@
 .AdvancedFormInstructions {
     height: 110.406px;
 }
+
+@media only screen and (max-width: 767px) {
+    .AdvancedForm {
+        height: 243px;
+    }
+
+    .ui.form .fields .FindWhalesButton.field {
+        margin-bottom: 1em;
+    }
+
+    .ui.form:not(.unstackable) .fields:not(.unstackable) > .twelve.wide.field {
+        margin-bottom: 1em;
+    }
+
+    .AdvancedFormInstructions {
+        height: 138.406px;
+    }
+
+    .FindWhales .ui.list > .item {
+        line-height: 1.4285em;
+    }
+}

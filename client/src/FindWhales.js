@@ -87,7 +87,7 @@ class FindWhales extends Component {
       ${advancedVisible ? '' : ' hidden'}`;
 
     return (
-      <>
+      <div className="FindWhales">
         <Form
           loading={loading}
           error={!!errorMessage}
@@ -154,7 +154,9 @@ class FindWhales extends Component {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Button primary circular>SEARCH FOR WHALES</Form.Button>
+            <Form.Button primary circular className="FindWhalesButton">
+              SEARCH FOR WHALES
+            </Form.Button>
             <Form.Button
               circular
               basic
@@ -177,7 +179,7 @@ class FindWhales extends Component {
         />
         <Divider section hidden />
         <WhaleList whales={whales} />
-      </>
+      </div>
     );
   }
 }
