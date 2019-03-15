@@ -83,21 +83,24 @@ class FindWhales extends Component {
     const advancedClassName = `AdvancedForm fade down
       ${advancedVisible ? '' : ' hidden'}`;
 
+    const advancedInstructionsClassName = `AdvancedFormInstructions fade down
+      ${advancedVisible ? '' : ' hidden'}`;
+
     return (
       <>
-        <Header as="h4">Instructions</Header>
-        <List bulleted size="small">
-          <List.Item>Enter the ERC-20 token address that you want to search.</List.Item>
-          <List.Item>Set the token decimals if you want account balances displayed in TKNs instead of TKNbits.</List.Item>
-          <List.Item>Start the search, it can take several minutes to complete, so do not navigate away from the page.</List.Item>
-          <List.Item>When the search is complete, click the download button to save your results to a spreadsheet.</List.Item>
-        </List>
-        <Divider hidden />
         <Form
           loading={loading}
           error={!!errorMessage}
           onSubmit={this.onSubmit}
         >
+          <Header as="h4">Instructions</Header>
+          <List bulleted size="small">
+            <List.Item>Enter the ERC-20 token address that you want to search.</List.Item>
+            <List.Item>Set the token decimals if you want account balances displayed in TKNs instead of TKNbits.</List.Item>
+            <List.Item>Start the search, it can take several minutes to complete, so do not navigate away from the page.</List.Item>
+            <List.Item>When the search is complete, click the download button to save your results to a spreadsheet.</List.Item>
+          </List>
+          <Divider hidden />
           <Form.Group>
             <Form.Input
               label="Token Address"
@@ -115,6 +118,15 @@ class FindWhales extends Component {
               width={4}
             />
           </Form.Group>
+          <div className={advancedInstructionsClassName}>
+            <Divider hidden />
+            <Header as="h4">Advanced Options</Header>
+            <List bulleted size="small">
+              <List.Item>Raising these values will speed up the search, but could cause errors.</List.Item>
+              <List.Item>Lowering these values will reduce errors, but make the search more reliable.</List.Item>
+            </List>
+            <Divider hidden />
+          </div>
           <Form.Group
             widths="equal"
             className={advancedClassName}
