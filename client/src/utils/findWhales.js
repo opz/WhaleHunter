@@ -307,13 +307,13 @@ async function getBalances(addresses, batchSize, instance) {
 }
 
 function mapNewBalances(web3, addresses, balances, addressBalanceMap) {
-  const BN = web3.utils.BN;
+  const toBN = web3.utils.toBN;
   // Add new addresses to map
   for (let i = 0; i < addresses.length; i++) {
     // Only add accounts with positive balances
     if (balances[i]) {
-      const balance = new BN(balances[i]);
-      if (balance.gt(new BN('0'))) {
+      const balance = toBN(balances[i]);
+      if (balance.gt(toBN('0'))) {
         addressBalanceMap.set(addresses[i], balance);
       }
     }
