@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Image, Menu } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 
 export default () => {
   let listItems = [

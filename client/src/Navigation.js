@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Icon, Image, Menu, Responsive, Sidebar } from 'semantic-ui-react';
+import { Icon, Menu, Responsive, Sidebar } from 'semantic-ui-react';
 import NavigationItems from './NavigationItems';
 import NetworkStatus from './NetworkStatus';
 
