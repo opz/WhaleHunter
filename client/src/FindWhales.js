@@ -178,7 +178,7 @@ class FindWhales extends Component {
           onConfirm={this.onConfirm}
         />
         <Divider section hidden />
-        <WhaleList whales={whales} />
+        <WhaleList whales={whales} decimals={decimals} />
       </div>
     );
   }
