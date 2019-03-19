@@ -3,6 +3,8 @@ import { Router, Route } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import ReactGA from 'react-ga';
 import Home from './Home';
+import Terms from './Terms';
+import Privacy from './Privacy';
 
 const history = createHistory();
 history.listen(location => {
@@ -20,6 +22,8 @@ class Routes extends Component {
       <Router history={history}>
         <>
           <Route exact path="/" component={Home} />
+          <Route path="/terms" component={Terms} />
+          <Route path="/privacy" component={Privacy} />
         </>
       </Router>
     );
