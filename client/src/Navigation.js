@@ -24,14 +24,14 @@ class Navigation extends Component {
   }
 
   render() {
-    const { web3, children } = this.props;
+    const { web3, accounts, children } = this.props;
     const { visible } = this.state;
 
     return (
       <div className="Navigation">
         <Sidebar.Pushable>
           <Sidebar as={Menu} animation="overlay" vertical visible={visible}>
-            <NetworkStatus web3={web3} />
+            <NetworkStatus web3={web3} accounts={accounts} />
             <NavigationItems />
           </Sidebar>
           <Sidebar.Pusher onClick={this.onPusherClick} dimmed={visible}>
@@ -40,7 +40,7 @@ class Navigation extends Component {
                 as={Menu.Menu}
                 minWidth={Responsive.onlyTablet.minWidth}
               >
-                <NetworkStatus web3={web3} />
+                <NetworkStatus web3={web3} accounts={accounts} />
               </Responsive>
               <Responsive
                 as={Menu.Menu}

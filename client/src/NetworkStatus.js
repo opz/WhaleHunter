@@ -2,9 +2,14 @@ import React from 'react';
 import { Icon, Menu } from 'semantic-ui-react';
 
 export default props => {
-  const { web3 } = props;
+  const { web3, accounts } = props;
 
-  if (web3 && (window.ethereum || window.web3)) {
+  const hasMetaMask = window.ethereum || window.web3;
+  const hasAccounts = accounts && accounts.length > 0;
+  const usingDefaultProvider = !hasAccounts && !hasMetaMask;
+  const metaMaskConnected = hasAccounts && hasMetaMask;
+
+  if (web3 && (usingDefaultProvider || metaMaskConnected)) {
     return (
       <Menu.Item>
         <Icon name="check circle" color="green" /> Network Connected
