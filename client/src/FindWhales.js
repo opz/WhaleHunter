@@ -71,23 +71,27 @@ class FindWhales extends Component {
   };
 
   adjustDecimals(balance) {
-    const decimalsInt = parseInt(this.state.decimals);
-
+    const decimalsInt = parseInt(this.state.decimals) || 0;
     const balanceString = balance.toString();
-    const length = balanceString.length;
 
-    const balancePrefix = balanceString.substring(0, length - decimalsInt);
-    let balanceSuffix = balanceString.substring(length - decimalsInt);
+    if (decimalsInt > 0) {
+      const length = balanceString.length;
 
-    if (balanceSuffix.length > 2) {
-      const places = Math.pow(10, balanceSuffix.length - 2);
-      balanceSuffix = Math.round(parseInt(balanceSuffix) / places) * places;
-      balanceSuffix = balanceSuffix.toString().substring(0, 2);
+      const balancePrefix = balanceString.substring(0, length - decimalsInt);
+      let balanceSuffix = balanceString.substring(length - decimalsInt);
+
+      if (balanceSuffix.length > 2) {
+        const places = Math.pow(10, balanceSuffix.length - 2);
+        balanceSuffix = Math.round(parseInt(balanceSuffix) / places) * places;
+        balanceSuffix = balanceSuffix.toString().substring(0, 2);
+      }
+
+      const fixed = balanceSuffix.padEnd(2, '0');
+
+      return `${balancePrefix}.${fixed}`;
+    } else {
+      return balanceString;
     }
-
-    const fixed = balanceSuffix.padEnd(2, '0');
-
-    return `${balancePrefix}.${fixed}`;
   }
 
   render() {
