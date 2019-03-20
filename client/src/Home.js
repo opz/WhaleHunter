@@ -15,12 +15,12 @@ const onCallToAction = formRef => {
 };
 
 export default withWeb3()(props => {
-  const { web3, accounts } = props;
+  const { location, web3, accounts } = props;
 
   const formRef = React.createRef();
 
   return (
-    <Layout web3={web3} accounts={accounts}>
+    <Layout location={location} web3={web3} accounts={accounts}>
       <PageHeader
         title="WhaleHunter"
         subtitle="Find whales for any ERC-20 token"

@@ -1,8 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react';
+import { Button, Menu } from 'semantic-ui-react';
 
-export default () => {
+export default props => {
+  const { location } = props;
   let listItems = [
     (
       <Menu.Item key="terms" as={NavLink} to="/terms">
@@ -14,6 +15,16 @@ export default () => {
       </Menu.Item>
     )
   ];
+
+  if (location.pathname !== '/') {
+    listItems.push(
+      <Menu.Item key="home" as={NavLink} exact to="/">
+        <Button primary circular>
+          START HUNTING
+        </Button>
+      </Menu.Item>
+    );
+  }
 
   return listItems;
 }

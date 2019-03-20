@@ -1,3 +1,7 @@
 @background: @lightPurpleBackground;
 @secondaryItemPadding: @relativeHuge @relativeSmall;
 @verticalBackground: @lightPurpleBackground;
+@secondaryHoverItemBackground: none;
+@secondaryActiveItemBackground: none;
+@secondaryActiveHoveredItemBackground: none;
+@secondaryActiveHoverItemBackground: none;

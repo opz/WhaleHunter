@@ -6,10 +6,10 @@ import Layout from './Layout';
 import './Privacy.css';
 
 export default withWeb3(false)(props => {
-  const { web3 } = props;
+  const { location, web3, accounts } = props;
 
   return (
-    <Layout web3={web3}>
+    <Layout location={location} web3={web3} accounts={accounts}>
       <div className="Privacy">
         <Container text>
           <p>Last updated February 25th, 2019</p>

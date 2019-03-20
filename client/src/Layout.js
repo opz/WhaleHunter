@@ -4,11 +4,12 @@ import Navigation from './Navigation';
 import Footer from './Footer';
 
 export default props => {
-  const { web3, accounts, children } = props;
+  const { location, web3, accounts, children } = props;
 
   return (
     <>
       <Navigation
+        location={location}
         web3={web3}
         accounts={accounts}
       >
