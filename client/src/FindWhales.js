@@ -52,6 +52,10 @@ class FindWhales extends Component {
         addressBatchSize
       );
 
+      for (const i in whales) {
+        whales[i][1] = this.adjustDecimals(whales[i][1]);
+      }
+
       this.setState({ whales });
     } catch(error) {
       this.setState({ errorMessage: error.message });
@@ -65,6 +69,26 @@ class FindWhales extends Component {
     const { advancedVisible } = this.state;
     this.setState({ advancedVisible: !advancedVisible });
   };
+
+  adjustDecimals(balance) {
+    const decimalsInt = parseInt(this.state.decimals);
+
+    const balanceString = balance.toString();
+    const length = balanceString.length;
+
+    const balancePrefix = balanceString.substring(0, length - decimalsInt);
+    let balanceSuffix = balanceString.substring(length - decimalsInt);
+
+    if (balanceSuffix.length > 2) {
+      const places = Math.pow(10, balanceSuffix.length - 2);
+      balanceSuffix = Math.round(parseInt(balanceSuffix) / places) * places;
+      balanceSuffix = balanceSuffix.toString().substring(0, 2);
+    }
+
+    const fixed = balanceSuffix.padEnd(2, '0');
+
+    return `${balancePrefix}.${fixed}`;
+  }
 
   render() {
     const {
@@ -178,7 +202,7 @@ class FindWhales extends Component {
           onConfirm={this.onConfirm}
         />
         <Divider section hidden />
-        <WhaleList whales={whales} decimals={decimals} />
+        <WhaleList token={token} whales={whales} decimals={decimals} />
       </div>
     );
   }

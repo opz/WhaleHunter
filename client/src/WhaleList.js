@@ -5,29 +5,12 @@ import ReactExport from 'react-data-export';
 import './WhaleList.css';
 
 function WhaleRow(props) {
-  const { whale, decimals } = props;
-  const decimalsInt = parseInt(decimals);
-
-  const balanceString = whale.balance.toString();
-  const length = balanceString.length;
-
-  const balancePrefix = balanceString.substring(0, length - decimalsInt);
-  let balanceSuffix = balanceString.substring(length - decimalsInt);
-
-  if (balanceSuffix.length > 2) {
-    const places = Math.pow(10, balanceSuffix.length - 2);
-    balanceSuffix = Math.round(parseInt(balanceSuffix) / places) * places;
-    balanceSuffix = balanceSuffix.toString().substring(0, 2);
-  }
-
-  const fixed = balanceSuffix.padEnd(2, '0');
-
-  const balance = `${balancePrefix}.${fixed}`;
+  const { whale } = props;
 
   return (
     <Table.Row>
       <Table.Cell>{whale.address}</Table.Cell>
-      <Table.Cell textAlign="right">{balance}</Table.Cell>
+      <Table.Cell textAlign="right">{whale.balance}</Table.Cell>
     </Table.Row>
   );
 }
@@ -41,7 +24,7 @@ class WhaleList extends Component {
   onPageChange = (event, { activePage }) => this.setState({ activePage });
 
   render() {
-    const { whales, decimals } = this.props;
+    const { token, whales } = this.props;
     const { pageSize, activePage } = this.state;
 
     const ExcelFile = ReactExport.ExcelFile;
@@ -51,13 +34,7 @@ class WhaleList extends Component {
 
     const whaleRows = whales.slice(start, end).map(whale => {
       const whaleObj = { address: whale[0], balance: whale[1] };
-      return (
-        <WhaleRow
-          key={whaleObj.address}
-          whale={whaleObj}
-          decimals={decimals}
-        />
-      );
+      return <WhaleRow key={whaleObj.address} whale={whaleObj} />;
     });
 
     const totalPages = Math.ceil(whales.length / pageSize);
@@ -82,7 +59,7 @@ class WhaleList extends Component {
             totalPages={totalPages}
             onPageChange={this.onPageChange}
           />
-          <ExcelFile element={
+          <ExcelFile filename={`${token}_whales`} element={
               <Button
                 circular
                 floated="right"
